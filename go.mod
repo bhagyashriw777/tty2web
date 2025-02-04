@@ -37,3 +37,7 @@ require (
 	golang.org/x/tools v0.14.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 )
+replace (
+	github.com/creack/pty => github.com/photostorm/pty v1.1.19-0.20221026012344-0a71ca4f0f8c
+	github.com/creack/pty v1.1.18 => github.com/photostorm/pty v1.1.19-0.20221026012344-0a71ca4f0f8c
+)
