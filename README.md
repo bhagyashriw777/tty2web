@@ -1,11 +1,11 @@
-# ![](https://raw.githubusercontent.com/bhagyashriw777/tty2web/master/resources/favicon.png) tty2web - Share your terminal as a web application (bind/reverse)
+# ![](https://raw.githubusercontent.com/kost/tty2web/master/resources/favicon.png) tty2web - Share your terminal as a web application (bind/reverse)
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/bhagyashriw777/tty2web/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/bhagyashriw777/tty2web/tree/master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kost/tty2web/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kost/tty2web/tree/master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 
-[release]: https://github.com/bhagyashriw777/tty2web/releases
+[release]: https://github.com/kost/tty2web/releases
 
-[license]: https://github.com/bhagyashriw777/tty2web/blob/master/LICENSE
+[license]: https://github.com/kost/tty2web/blob/master/LICENSE
 
 tty2web is a simple command line tool that turns your CLI tools into web applications. it is based on [Gotty](https://github.com/yudai/gotty), but heavily improved.
 
@@ -19,11 +19,11 @@ Improvements include:
 - support for Windows (and conpty!)
 - components upgrade (go and js including xterm.js)
 
-![Screenshot](https://raw.githubusercontent.com/bhagyashriw777/tty2web/master/screenshot.gif)
+![Screenshot](https://raw.githubusercontent.com/kost/tty2web/master/screenshot.gif)
 
 # Installation
 
-Download the latest stable binary file from the [Releases](https://github.com/bhagyashriw777/tty2web/releases) page. Note that the release marked `Pre-release` is built for testing purpose, which can include unstable or breaking changes. Download a release marked [Latest release](https://github.com/bhagyashriw777/tty2web/releases/latest) for a stable build.
+Download the latest stable binary file from the [Releases](https://github.com/kost/tty2web/releases) page. Note that the release marked `Pre-release` is built for testing purpose, which can include unstable or breaking changes. Download a release marked [Latest release](https://github.com/kost/tty2web/releases/latest) for a stable build.
 
 (Files named with `darwin_amd64` are for Mac OS X users)
 
@@ -32,7 +32,7 @@ Download the latest stable binary file from the [Releases](https://github.com/bh
 If you have a Go language environment, you can install tty2web with the `go install` command. However, this command builds a binary file from the latest master branch, which can include unstable or breaking changes. tty2web requires go1.18 or later (embed directive and dependency github.com/urfave/cli have strings.Builder). Also, note that you have to checkot source code and then run go install due to using forked version of pty module.
 
 ```sh
-$ git clone github.com/bhagyashriw777/tty2web
+$ git clone github.com/kost/tty2web
 $ cd tty2web
 $ go install
 ```
@@ -40,7 +40,7 @@ $ go install
 I would suggest to build it with following commands (make sure that you have $GOPATH set to valid value):
 
 ```sh
-git clone https://github.com/bhagyashriw777/tty2web $GOPATH/src/tty2web
+git clone https://github.com/kost/tty2web $GOPATH/src/tty2web
 cd $GOPATH/src/tty2web
 make tools
 make tty2web
@@ -144,7 +144,7 @@ You can customize default options and your terminal (hterm) by providing a confi
         background_color = "rgb(16, 16, 32)"
     }
 
-See the [`.tty2web`](https://github.com/bhagyashriw777/tty2web/blob/master/.tty2web) file in this repository for the list of configuration options.
+See the [`.tty2web`](https://github.com/kost/tty2web/blob/master/.tty2web) file in this repository for the list of configuration options.
 
 ### Security Options
 
@@ -283,7 +283,7 @@ Note that DNS tunneling can be slow.
 You can speed up DNS boot up time to fetch initial javascript from Javascript on the Internet URL:
 
 ```sh
-$ tty2web --dns example.com --dnskey <key> --jsurl http://cdn.jsdelivr.net/gh/bhagyashriw777/tty2web/bindata/static/js/ top
+$ tty2web --dns example.com --dnskey <key> --jsurl http://cdn.jsdelivr.net/gh/kost/tty2web/bindata/static/js/ top
 ```
 
 ## SC support

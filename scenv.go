@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/bhagyashriw777/gosc/msf"
-	"github.com/bhagyashriw777/gosc/shell"
+	"github.com/kost/gosc/msf"
+	"github.com/kost/gosc/shell"
 )
 
 func sleepForever() {

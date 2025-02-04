@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/bhagyashriw777/dnstun"
+	"github.com/kost/dnstun"
 )
 
 func GenerateKey() string {

@@ -19,13 +19,13 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
-	"github.com/bhagyashriw777/tty2web/bindata"
+	"github.com/kost/tty2web/bindata"
 	"github.com/bhagyashriw777t/tty2web/pkg/homedir"
-	"github.com/bhagyashriw777/tty2web/pkg/randomstring"
-	"github.com/bhagyashriw777/tty2web/webtty"
-	"github.com/bhagyashriw777/tty2web/tlshelp"
-	"github.com/bhagyashriw777/httpexecute"
-	"github.com/bhagyashriw777/regeorgo"
+	"github.com/kost/tty2web/pkg/randomstring"
+	"github.com/kost/tty2web/webtty"
+	"github.com/kost/tty2web/tlshelp"
+	"github.com/kost/httpexecute"
+	"github.com/kost/regeorgo"
 )
 
 // Server provides a webtty HTTP endpoint.

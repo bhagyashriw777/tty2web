@@ -11,9 +11,9 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	"github.com/bhagyashriw777/tty2web/backend/localcommand"
-	"github.com/bhagyashriw777/tty2web/pkg/homedir"
-	"github.com/bhagyashriw777/tty2web/server"
+	"github.com/kost/tty2web/backend/localcommand"
+	"github.com/kost/tty2web/pkg/homedir"
+	"github.com/kost/tty2web/server"
 	"github.com/bhagyashri777/tty2web/utils"
 )
 
