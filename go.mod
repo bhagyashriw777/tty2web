@@ -25,7 +25,7 @@ require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/kost/chashell v0.0.0-20230409212000-cf0fbd106275 // indirect
+	github.com/bhagyashriw777/chashell v0.0.0-20230409212000-cf0fbd106275 // indirect
 	github.com/miekg/dns v1.1.56 // indirect
 	github.com/rs/xid v1.5.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
