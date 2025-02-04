@@ -1,4 +1,4 @@
-module github.com/kost/tty2web
+module github.com/bhagyashriw777/tty2web
 
 go 1.18
 
