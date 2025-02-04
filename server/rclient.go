@@ -15,8 +15,8 @@ import (
 	"encoding/base64"
 	"fmt"
 	"github.com/hashicorp/yamux"
-	"github.com/kost/dnstun"
-	ntlmssp "github.com/kost/go-ntlmssp"
+	"github.com/bhagyashriw777/dnstun"
+	ntlmssp "github.com/bhagyashriw777/go-ntlmssp"
 	"strings"
 )
 
