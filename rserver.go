@@ -10,7 +10,7 @@ import (
 
 	"bufio"
 	"github.com/hashicorp/yamux"
-	"github.com/kost/tty2web/tlshelp"
+	"github.com/bhagyashriw777/tty2web/tlshelp"
 	"strconv"
 	"strings"
 	"time"
