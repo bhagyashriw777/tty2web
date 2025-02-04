@@ -1,11 +1,11 @@
 # This workflow integrates a collection of open source static analysis tools
 # with GitHub code scanning. For documentation, or to provide feedback, visit
 # https://github.com/github/ossar-action
-name: OSSAR
+#name: OSSAR
 
-on:
-  push:
-  pull_request:
+#on:
+#  push:
+#  pull_request:
 
 #jobs:
   #OSSAR-Scan:
