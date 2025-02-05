@@ -11,7 +11,7 @@ import (
 	"github.com/fatih/structs"
 	"github.com/yudai/hcl"
 
-	"github.com/kost/tty2web/pkg/homedir"
+	"github.com/bhagyashriw777/tty2web/pkg/homedir"
 )
 
 func GenerateFlags(options ...interface{}) (flags []cli.Flag, mappings map[string]string, err error) {
