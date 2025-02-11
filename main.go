@@ -11,10 +11,10 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	"github.com/bhagyashri777/tty2web/utils"
 	"github.com/bhagyashriw777/tty2web/backend/localcommand"
 	"github.com/bhagyashriw777/tty2web/pkg/homedir"
 	"github.com/bhagyashriw777/tty2web/server"
+	"github.com/bhagyashriw777/tty2web/utils"
 )
 
 func main() {

@@ -10,22 +10,22 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"regexp"
 	noesctmpl "text/template"
 	"time"
-	"os"
 
 	"github.com/NYTimes/gziphandler"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
-	"github.com/bhagyashriw777/tty2web/bindata"
-	"github.com/bhagyashriw777t/tty2web/pkg/homedir"
-	"github.com/bhagyashriw777/tty2web/pkg/randomstring"
-	"github.com/bhagyashriw777/tty2web/webtty"
-	"github.com/bhagyashriw777/tty2web/tlshelp"
 	"github.com/bhagyashriw777/httpexecute"
 	"github.com/bhagyashriw777/regeorgo"
+	"github.com/bhagyashriw777/tty2web/bindata"
+	"github.com/bhagyashriw777/tty2web/pkg/homedir"
+	"github.com/bhagyashriw777/tty2web/pkg/randomstring"
+	"github.com/bhagyashriw777/tty2web/tlshelp"
+	"github.com/bhagyashriw777/tty2web/webtty"
 )
 
 // Server provides a webtty HTTP endpoint.
@@ -101,7 +101,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 	counter := newCounter(time.Duration(server.options.Timeout) * time.Second)
 
 	path := "/"
-	if server.options.Url!="" {
+	if server.options.Url != "" {
 		path = "/" + server.options.Url + "/"
 	}
 	if server.options.EnableRandomUrl {
@@ -132,7 +132,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 		keyFile := homedir.Expand(server.options.TLSKeyFile)
 		log.Printf("TLS crt file: " + crtFile)
 		log.Printf("TLS key file: " + keyFile)
-		cer, err := tls.LoadX509KeyPair(crtFile,keyFile)
+		cer, err := tls.LoadX509KeyPair(crtFile, keyFile)
 		if err != nil {
 			log.Printf("Error loading TLS key and crt file %s and %s: %v. Generating random one!", crtFile, keyFile, err)
 
@@ -142,7 +142,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 			}
 		}
 		config := &tls.Config{Certificates: []tls.Certificate{cer}}
-		srv.TLSConfig=config
+		srv.TLSConfig = config
 	}
 	if server.options.Dns != "" {
 		go func() {
@@ -192,7 +192,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 			}()
 		} else {
 			go func() {
-				session, err = connectForSocks(server.options.Connect,server.options.Proxy, server.options.ProxyAuth, server.options.Password, server.options.AgentTLS)
+				session, err = connectForSocks(server.options.Connect, server.options.Proxy, server.options.ProxyAuth, server.options.Password, server.options.AgentTLS)
 				if err != nil {
 					log.Printf("Error creating sessions %s", err)
 					srvErr <- err
@@ -250,14 +250,14 @@ func (server *Server) setupHandlers(ctx context.Context, cancel context.CancelFu
 
 	if server.options.All {
 		if server.options.FileDownload == "" {
-			server.options.FileDownload="/"
+			server.options.FileDownload = "/"
 		}
 		if server.options.FileUpload == "" {
 			server.options.FileUpload = "/"
 		}
-		server.options.API=true
-		server.options.Regeorg=true
-		server.options.Scexec=true
+		server.options.API = true
+		server.options.Regeorg = true
+		server.options.Scexec = true
 	}
 
 	siteMux.HandleFunc(pathPrefix, server.handleIndex)

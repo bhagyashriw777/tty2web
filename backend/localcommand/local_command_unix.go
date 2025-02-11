@@ -1,14 +1,16 @@
+//go:build !windows
 // +build !windows
 
 package localcommand
 
 import (
+	"os"
 	"os/exec"
 	"syscall"
 	"time"
 	"unsafe"
 
-	"github.com/creack/pty"
+	"github.com/kr/pty"
 	"github.com/pkg/errors"
 )
 
@@ -25,7 +27,7 @@ type LocalCommand struct {
 	closeTimeout time.Duration
 
 	cmd       *exec.Cmd
-	pty       pty.Pty
+	pty       *os.File
 	ptyClosed chan struct{}
 }
 
