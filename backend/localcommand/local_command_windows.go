@@ -1,13 +1,15 @@
+//go:build windows
 // +build windows
 
 package localcommand
 
 import (
+	"io"
+	"log"
+	"os"
 	"os/exec"
 	"syscall"
 	"time"
-	"io"
-	"log"
 
 	"github.com/creack/pty"
 	// "github.com/photostorm/pty"
@@ -26,16 +28,16 @@ type LocalCommand struct {
 	closeSignal  syscall.Signal
 	closeTimeout time.Duration
 
-	cmd       *exec.Cmd
+	cmd *exec.Cmd
 
-	stdin	io.WriteCloser
-	stdout	io.ReadCloser
-	stderr	io.ReadCloser
+	stdin  io.WriteCloser
+	stdout io.ReadCloser
+	stderr io.ReadCloser
 
 	// stdcomb bytes.Buffer
 
-	pty	pty.Pty
-	ispty 	bool
+	pty       *os.File
+	ispty     bool
 	ptyClosed chan struct{}
 }
 
@@ -49,19 +51,19 @@ func New(command string, argv []string, options ...Option) (*LocalCommand, error
 		closeSignal:  DefaultCloseSignal,
 		closeTimeout: DefaultCloseTimeout,
 
-		cmd:       cmd,
-		stdin:     nil,
-		stdout:    nil,
+		cmd:    cmd,
+		stdin:  nil,
+		stdout: nil,
 		//stderr:    stderr,
 		pty:       pty,
-		ispty:	true,
+		ispty:     true,
 		ptyClosed: nil,
 	}
 	if err != nil {
 		log.Printf("Failed to start command `%s` with conpty, trying without (limited experience)", command)
 		// todo close cmd?
 		lcmd.ispty = false
-	        lcmd.stdin, _ = cmd.StdinPipe()
+		lcmd.stdin, _ = cmd.StdinPipe()
 		lcmd.stdout, _ = cmd.StdoutPipe()
 		// stderr, _ := cmd.StderrPipe()
 		/// var stdcomb bytes.Buffer
@@ -92,14 +94,14 @@ func New(command string, argv []string, options ...Option) (*LocalCommand, error
 }
 
 func (lcmd *LocalCommand) Read(p []byte) (n int, err error) {
-	if (lcmd.ispty) {
+	if lcmd.ispty {
 		return lcmd.pty.Read(p)
 	}
-	return lcmd.stdout.Read (p)
+	return lcmd.stdout.Read(p)
 }
 
 func (lcmd *LocalCommand) Write(p []byte) (n int, err error) {
-	if (lcmd.ispty) {
+	if lcmd.ispty {
 		return lcmd.pty.Write(p)
 	}
 	return lcmd.stdin.Write(p)
@@ -130,11 +132,11 @@ func (lcmd *LocalCommand) WindowTitleVariables() map[string]interface{} {
 func (lcmd *LocalCommand) ResizeTerminal(width int, height int) error {
 	// only conpty support resizing of terminal
 	if lcmd.ispty {
-		winsize:=&pty.Winsize{
+		winsize := &pty.Winsize{
 			Rows: uint16(height),
 			Cols: uint16(width),
 		}
-		errno:=pty.Setsize(lcmd.pty, winsize)
+		errno := pty.Setsize(lcmd.pty, winsize)
 		return errno
 	}
 	return nil
